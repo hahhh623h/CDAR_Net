@@ -1,0 +1,54 @@
+
+# folder path of dataset, which includes 2 subfolders: cloudy_image/ and ground_truth/
+datasets_dir: E:\C-CUHK\CUHK-CR1-256   #D:\毕设\数据集 #Dataset name, the path of the dataset need to change in the dataload
+#allclear_train_json: E:\allclear_dataset\allclear_half_train.json
+#allclear_test_json:  E:\allclear_dataset\allclear_test_metadata.json   #E:\allclear_dataset\allclear_half_test.json
+#allclear_src_root: /scratch/allclear/dataset_v3/dataset_30k_v4
+
+out_dir: E:\qy\C-CUHK_CDAR-Net  #your output dir path
+
+cuda: True
+gpu_ids: [0]
+
+batchsize: 1
+validation_batchsize: 1
+epoch: 20
+n_data: 433
+#width: 256
+#height: 256
+threads: 1
+
+lr: 0.0001
+beta1: 0.5
+lamb: 100
+minimax: 1
+
+gen_init:  NULL
+dis_init:
+in_ch: 3
+out_ch: 3
+
+manualSeed: 0
+snapshot_interval: 1
+
+model: CDAR_Net
+print_every: 100
+###新增
+seed: 42
+num_dense_layer: 4
+growth_rate: 16
+alpha: 1.0
+beta: 0.1  #0.8
+gamma: 0.5
+delta: 0.2  #0.1
+gp_weight: 10.0
+use_perceptual: true
+perceptual_weight: 0.04
+width: 6
+height: 3
+# 验证配置
+calc_ssim: true  # 是否计算SSIM
+resume: false     # 是否从检查点恢复训练
+validation_interval: 1
+ablation_mode: full
+caff_threshold: 0.5
